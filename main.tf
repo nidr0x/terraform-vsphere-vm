@@ -27,7 +27,7 @@ resource "vsphere_virtual_machine" "LinuxVM" {
   count = "${ var.is_windows_image != "true" && var.data_disk == "false" ? var.instances : 0}"
 
   //Name of the server with index of count +1 to start from 1
-  name             = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+  name             = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   folder           = "${var.vmfolder}"
 
@@ -59,7 +59,7 @@ resource "vsphere_virtual_machine" "LinuxVM" {
 
     customize {
       linux_options {
-        host_name = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+        host_name = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
         domain    = "${var.vmdomain}"
       }
 
@@ -79,7 +79,7 @@ resource "vsphere_virtual_machine" "LinuxVM-withDataDisk" {
   count = "${ var.is_windows_image != "true" && var.data_disk == "true" ? var.instances : 0}"
 
   //Name of the server with index of count +1 to start from 1
-  name             = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+  name             = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   folder           = "${var.vmfolder}"
 
@@ -117,7 +117,7 @@ resource "vsphere_virtual_machine" "LinuxVM-withDataDisk" {
 
     customize {
       linux_options {
-        host_name = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+        host_name = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
         domain    = "${var.vmdomain}"
       }
 
@@ -137,7 +137,7 @@ resource "vsphere_virtual_machine" "WindowsVM" {
   count = "${ var.is_windows_image == "true" && var.data_disk == "false" && var.join_windomain == "false" ? var.instances : 0}"
 
   //Name of the server with index of count +1 to start from 1
-  name             = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+  name             = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   folder           = "${var.vmfolder}"
 
@@ -228,7 +228,7 @@ resource "vsphere_virtual_machine" "WindowsVM-withDataDisk" {
 
     customize {
       windows_options {
-        computer_name         = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+        computer_name         = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
         admin_password        = "${var.winadminpass}"
         run_once_command_list = "${var.run_once}"
       }
@@ -249,7 +249,7 @@ resource "vsphere_virtual_machine" "WindowsVM-Domain" {
   count = "${ var.is_windows_image == "true" && var.data_disk == "false" && var.join_windomain == "true" ? var.instances : 0}"
 
   //Name of the server with index of count +1 to start from 1
-  name             = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+  name             = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   folder           = "${var.vmfolder}"
 
@@ -307,7 +307,7 @@ resource "vsphere_virtual_machine" "WindowsVM-withDataDisk-Domain" {
   count = "${ var.is_windows_image == "true" && var.data_disk == "true" && var.join_windomain == "true" ? var.instances : 0}"
 
   //Name of the server with index of count +1 to start from 1
-  name             = "${var.vmname}${count.index+1}${var.vmnamesuffix}"
+  name             = "${var.vmname}-${count.index+1}${var.vmnamesuffix}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   folder           = "${var.vmfolder}"
 
