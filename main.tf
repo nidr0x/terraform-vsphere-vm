@@ -1,3 +1,10 @@
+provider "vsphere" {
+}
+
+terraform {
+  backend "s3" {}
+}
+
 data "vsphere_datacenter" "dc" {
   name = "${var.dc}"
 }
