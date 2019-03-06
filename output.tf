@@ -10,12 +10,16 @@ output "ResPool_ID" {
 
 output "vm_name" {
   description = "VMs names deployed from all reources"
-  value       = ["${vsphere_virtual_machine.LinuxVM.*.name}"]
-  value       = ["${vsphere_virtual_machine.LinuxVM-withDataDisk.*.name}"]
+  value       = ["${vsphere_virtual_machine.LinuxVM.*.vm_name}"]
+  value       = ["${vsphere_virtual_machine.LinuxVM-withDataDisk.*.vm_name}"]
   value       = ["${vsphere_virtual_machine.WindowsVM.*.name}"]
   value       = ["${vsphere_virtual_machine.WindowsVM-withDataDisk.*.name}"]
   value       = ["${vsphere_virtual_machine.WindowsVM-Domain.*.name}"]
   value       = ["${vsphere_virtual_machine.WindowsVM-withDataDisk-Domain.*.name}"]
+}
+
+output "vmnames" {
+  value       = ["${vsphere_virtual_machine.LinuxVM.*.vm_name}"]
 }
 
 output "vm_ip" {
