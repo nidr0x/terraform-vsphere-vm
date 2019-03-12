@@ -124,3 +124,8 @@ variable "productkey" {
   description = "Product key to be used during windows customization. Defualt set to win2k16 KMS"
   default     = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY"
 }
+
+variable "wait_routable" {
+  description = "Controls whether or not the guest network waiter waits for a routable address."
+  default     = "false"
+}
